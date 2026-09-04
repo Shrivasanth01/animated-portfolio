@@ -1,26 +1,40 @@
 export const profileData = {
-  name: "[YOUR NAME]",
-  role: "Full-Stack Web Developer",
-  primaryPositioning: "I build digital systems, not just websites.",
-  tagline: "Full-Stack Web Developer focused on building scalable, intelligent and beautifully engineered digital products.",
-  location: "[YOUR LOCATION]",
-  email: "[YOUR EMAIL]",
+  name: "Shrivasanth J",
+  role: "Computer Science Engineer & Full-Stack Developer",
+  primaryPositioning: "Full-Stack Developer building intelligent, secure, and resilient digital systems.",
+  tagline: "Computer Science Engineer focused on Full-Stack Development, AI/ML, Distributed Systems, and Secure Offline-First Applications.",
+  location: "Tamil Nadu, India",
+  email: "shrivasanth01@gmail.com",
+  phone: "+91 93636 64299",
   githubUrl: "https://github.com/shrivasanth01",
-  linkedinUrl: "https://linkedin.com/in/[YOUR_LINKEDIN]",
+  linkedinUrl: "https://linkedin.com/in/shrivasanth-j",
   status: "AVAILABLE FOR OPPORTUNITIES",
-  currentMode: "BUILDING",
+  currentMode: "BUILDING & ENGINEERING",
+
+  languagesSpoken: ["English", "Tamil", "Kannada", "Japanese (Beginner)"],
+
+  education: {
+    degree: "B.Tech – Computer Science Engineering",
+    institution: "SRM Institute of Science and Technology, Tiruchirapalli",
+    cgpa: "8.30 / 10",
+    graduation: "Expected May 2028",
+    schooling: [
+      { school: "Sri Raghavendra Matric Higher Secondary School, Salem, Tamil Nadu", level: "Class XII — 76%", year: "2022" },
+      { school: "Sri Raghavendra Matric Higher Secondary School, Salem, Tamil Nadu", level: "Class X — 86%", year: "2020" }
+    ]
+  },
 
   bio: {
     title: "ENGINEER, BUILDER, PROBLEM SOLVER.",
     paragraphs: [
-      "I approach web development as a complete system engineering discipline. From high-level architectural decisions and database indexing down to microsecond rendering cycles and pixel-perfect design polish, I create software that lasts.",
-      "My philosophy centers on building clean, modular, and performant digital experiences. I solve complex business problems by converting messy real-world demands into resilient, scalable, and intuitive digital applications."
+      "I am a Computer Science Engineering student at SRM Institute of Science and Technology specializing in full-stack web applications, AI/ML models, distributed offline-first networks, and secure IoT platforms.",
+      "Rather than restricting myself to standard web frameworks, I build complete resilience-first applications — ranging from ResQNet (a decentralized offline-first disaster response system using BLE mesh & AES-256 encryption) to AI-powered behavioral biometric authentication systems and ESP32 micro-controller platforms."
     ],
     pillars: [
-      { label: "Architecture", value: "Distributed & Scalable" },
-      { label: "Engineering", value: "Clean & Type-Safe" },
-      { label: "Performance", value: "Sub-100ms Target" },
-      { label: "Product UX", value: "Intuitive & Accessible" }
+      { label: "Systems & Network", value: "Offline-First & BLE Mesh" },
+      { label: "AI & Security", value: "Biometrics & Anomaly Detection" },
+      { label: "Full-Stack Web", value: "React, Next.js, FastAPI & Node" },
+      { label: "Embedded / IoT", value: "ESP32 & Real-Time Sensors" }
     ]
   },
 
@@ -30,15 +44,15 @@ export const profileData = {
     database: "ONLINE",
     apis: "ONLINE",
     deployment: "ONLINE",
-    latency: "24ms",
-    uptime: "99.98%",
-    activeRegion: "us-east-1"
+    latency: "18ms",
+    uptime: "99.99%",
+    activeRegion: "asia-south1 (India)"
   },
 
   quickSpecs: [
-    { label: "ROLE", value: "Full-Stack Web Developer" },
-    { label: "FOCUS", value: "Web Apps, APIs, Cloud Systems, DB Architecture" },
-    { label: "PRIMARY STACK", value: "TypeScript, React, Node.js, Next.js, PostgreSQL" },
-    { label: "CURRENT MODE", value: "BUILDING & OPEN TO ROLES" }
+    { label: "NAME", value: "Shrivasanth J" },
+    { label: "DEGREE", value: "B.Tech Computer Science Engineering (SRM IST)" },
+    { label: "FOCUS", value: "Full-Stack, AI/ML, Distributed Systems, Cryptography, IoT" },
+    { label: "LANGUAGES SPOKEN", value: "English, Tamil, Kannada, Japanese (Beginner)" }
   ]
 };
