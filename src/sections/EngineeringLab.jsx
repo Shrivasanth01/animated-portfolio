@@ -6,7 +6,7 @@ export default function EngineeringLab() {
   const [activeTab, setActiveTab] = useState('api-visualizer');
 
   // Experiment 1: API Request Visualizer State
-  const [apiEndpoint, setApiEndpoint] = useState('/api/v1/telemetry');
+  const [apiEndpoint, setApiEndpoint] = useState('/api/v1/sos/telemetry');
   const [apiMethod, setApiMethod] = useState('GET');
   const [apiResponse, setApiResponse] = useState(null);
   const [apiLoading, setApiLoading] = useState(false);
@@ -18,16 +18,16 @@ export default function EngineeringLab() {
       setApiResponse({
         status: 200,
         statusText: 'OK',
-        latencyMs: Math.floor(Math.random() * 25) + 18,
+        latencyMs: Math.floor(Math.random() * 15) + 12,
         headers: {
           'content-type': 'application/json; charset=utf-8',
-          'cache-control': 'max-age=60, s-maxage=3600',
-          'x-rate-limit-remaining': '4998/5000'
+          'x-signature-algorithm': 'Ed25519',
+          'x-encryption-payload': 'AES-256-GCM'
         },
         body: {
           success: true,
           timestamp: new Date().toISOString(),
-          metrics: { activeConnections: 1240, cpuUsagePct: 12.4, memoryMb: 248.6 }
+          metrics: { activeNodes: 48, meshRelays: 12, encryptedCapsules: 1420 }
         }
       });
       setApiLoading(false);
@@ -42,12 +42,12 @@ export default function EngineeringLab() {
   const toggleWsConnection = () => {
     if (wsConnected) {
       setWsConnected(false);
-      setWsFrames(prev => [...prev, { dir: 'SYS', text: 'DISCONNECTED FROM WSS://STREAM.TELEMETRY.IO', time: new Date().toLocaleTimeString() }]);
+      setWsFrames(prev => [...prev, { dir: 'SYS', text: 'DISCONNECTED FROM WSS://RESQNET.NODE.IO', time: new Date().toLocaleTimeString() }]);
     } else {
       setWsConnected(true);
       setWsFrames([
-        { dir: 'SYS', text: 'HANDSHAKE VERIFIED: HTTP/1.1 101 SWITCHING PROTOCOLS', time: new Date().toLocaleTimeString() },
-        { dir: 'IN', text: '{"event":"HEARTBEAT","status":"ONLINE"}', time: new Date().toLocaleTimeString() }
+        { dir: 'SYS', text: 'HANDSHAKE VERIFIED: HTTP/1.1 101 SWITCHING PROTOCOLS (ED25519)', time: new Date().toLocaleTimeString() },
+        { dir: 'IN', text: '{"event":"MESH_HEALTH","status":"ONLINE","nodes":48}', time: new Date().toLocaleTimeString() }
       ]);
     }
   };
@@ -58,30 +58,30 @@ export default function EngineeringLab() {
     setWsFrames(prev => [
       ...prev,
       { dir: 'OUT', text: wsMessage, time },
-      { dir: 'IN', text: `{"ack":true,"echo":"${wsMessage}","latency":"14ms"}`, time }
+      { dir: 'IN', text: `{"ack":true,"echo":"${wsMessage}","latency":"12ms"}`, time }
     ]);
     setWsMessage('');
   };
 
   // Experiment 3: SQL Query Execution Analyzer State
-  const [selectedQuery, setSelectedQuery] = useState('SELECT * FROM telemetry_events WHERE latency > 100 ORDER BY timestamp DESC LIMIT 50');
+  const [selectedQuery, setSelectedQuery] = useState('SELECT * FROM emergency_capsules WHERE priority = "CRITICAL" ORDER BY timestamp DESC LIMIT 50');
   const [explainPlan, setExplainPlan] = useState(null);
 
   const runSqlExplain = () => {
     setExplainPlan({
-      executionTimeMs: 1.42,
+      executionTimeMs: 0.88,
       plan: [
-        '-> Index Scan Backward using idx_telemetry_timestamp on metrics  (cost=0.42..8.44 rows=50 width=84)',
-        '   Filter: (latency > 100)',
-        '   Buffers: shared hit=4 read=0',
-        'Planning Time: 0.12 ms',
-        'Execution Time: 1.42 ms'
+        '-> Index Scan Backward using idx_capsules_timestamp on emergency_capsules  (cost=0.12..4.20 rows=50 width=64)',
+        '   Filter: (priority = "CRITICAL")',
+        '   Buffers: shared hit=2 read=0',
+        'Planning Time: 0.08 ms',
+        'Execution Time: 0.88 ms'
       ]
     });
   };
 
   // Experiment 4: JWT Inspector State
-  const [jwtToken, setJwtToken] = useState('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZlbG9wZXItMDFhIiwicm9sZSI6IkZ1bGwtU3RhY2sgRW5naW5lZXIiLCJpYXQiOjE3NDEyMTIwMDAsImV4cCI6MTc3Mjc0ODAwMH0.signature_hash_verify');
+  const [jwtToken, setJwtToken] = useState('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaHJpdmFzYW50aC0wMWEiLCJyb2xlIjoiQ29tcHV0ZXIgU2NpZW5jZSBFbmdpbmVlciIsImlhdCI6MTc0MTIxMjAwMCwiZXhwIjoxNzcyNzQ4MDAwfQ.signature_hash_verify');
 
   // Experiment 5: AI Streamer State
   const [aiStreamText, setAiStreamText] = useState('');
@@ -90,7 +90,7 @@ export default function EngineeringLab() {
   const startAiStream = () => {
     setAiStreaming(true);
     setAiStreamText('');
-    const fullText = "Full-Stack Web Engineering involves designing scalable architectures, type-safe data pipelines, and responsive client user interfaces.";
+    const fullText = "Computer Science Engineering involves designing resilient software architectures, continuous AI biometrics, BLE mesh networking, and secure offline-first systems.";
     let index = 0;
 
     const interval = setInterval(() => {
@@ -101,23 +101,23 @@ export default function EngineeringLab() {
         clearInterval(interval);
         setAiStreaming(false);
       }
-    }, 30);
+    }, 28);
   };
 
   return (
-    <section id="lab" className="py-24 bg-[#08090d] border-t border-slate-900 font-mono-tech relative">
+    <section id="lab" className="py-24 bg-[#040d0a] border-t border-slate-900 font-mono-tech relative select-text">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span className="text-xs font-bold text-cyan-400 bg-cyan-950/80 px-3 py-1 rounded-full border border-cyan-500/30">
+          <span className="text-xs font-bold text-emerald-400 bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-500/30">
             INTERACTIVE TECHNICAL EXPERIMENTS
           </span>
           <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
             THE ENGINEERING LAB
           </h2>
-          <p className="text-slate-400 text-xs sm:text-sm">
-            Don't take my word for it. Interact with live functional developer tools and engineering mini-apps below.
+          <p className="text-slate-400 text-xs sm:text-sm font-sans">
+            Demonstrating technical capability through live functional developer tools and engineering mini-apps.
           </p>
         </div>
 
@@ -131,8 +131,8 @@ export default function EngineeringLab() {
                 onClick={() => setActiveTab(exp.id)}
                 className={`px-4 py-2.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
                   isSelected
-                    ? 'bg-cyan-500 text-slate-950 border-cyan-400 shadow-[0_0_20px_rgba(0,240,255,0.4)]'
-                    : 'glass-panel text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
+                    ? 'bg-emerald-400 text-slate-950 border-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.4)]'
+                    : 'os-glass-panel text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
                 }`}
                 data-cursor="RUN LAB"
               >
@@ -143,7 +143,7 @@ export default function EngineeringLab() {
         </div>
 
         {/* Experiment Main Stage Container */}
-        <div className="glass-panel rounded-2xl border border-cyan-500/30 p-6 sm:p-8 shadow-2xl min-h-[420px]">
+        <div className="os-glass-panel rounded-2xl border border-emerald-500/30 p-6 sm:p-8 shadow-2xl min-h-[420px]">
           
           {/* LAB 1: API Visualizer */}
           {activeTab === 'api-visualizer' && (
@@ -151,10 +151,10 @@ export default function EngineeringLab() {
               <div className="flex items-center justify-between border-b border-slate-800 pb-4">
                 <div>
                   <h3 className="font-sans text-xl font-bold text-slate-100">API REQUEST & LATENCY BENCHMARK</h3>
-                  <p className="text-xs text-slate-400">Simulate REST HTTP execution and inspect latency metrics.</p>
+                  <p className="text-xs text-slate-400 font-sans">Simulate FastAPI / REST HTTP execution and inspect latency metrics.</p>
                 </div>
-                <span className="text-xs text-cyan-400 font-bold bg-cyan-950/80 px-3 py-1 rounded-full border border-cyan-500/30">
-                  HTTP / 1.1 & HTTP / 2
+                <span className="text-xs text-emerald-400 font-bold bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-500/30">
+                  FASTAPI / REST / HTTP 2
                 </span>
               </div>
 
@@ -163,7 +163,7 @@ export default function EngineeringLab() {
                 <select
                   value={apiMethod}
                   onChange={(e) => setApiMethod(e.target.value)}
-                  className="bg-slate-900 text-cyan-400 font-bold text-xs p-3 rounded-xl border border-slate-800 focus:outline-none"
+                  className="bg-slate-900 text-emerald-400 font-bold text-xs p-3 rounded-xl border border-slate-800 focus:outline-none"
                 >
                   <option value="GET">GET</option>
                   <option value="POST">POST</option>
@@ -178,7 +178,7 @@ export default function EngineeringLab() {
                 <button
                   onClick={runApiBenchmark}
                   disabled={apiLoading}
-                  className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs rounded-xl flex items-center justify-center space-x-2 transition-all cursor-pointer"
+                  className="px-6 py-3 bg-emerald-400 hover:bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl flex items-center justify-center space-x-2 transition-all cursor-pointer"
                   data-cursor="BENCHMARK"
                 >
                   {apiLoading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
@@ -197,13 +197,13 @@ export default function EngineeringLab() {
                     </div>
                     <div className="p-3 bg-slate-900 rounded-lg border border-slate-800">
                       <span className="text-[10px] text-slate-500 block">LATENCY BENCHMARK</span>
-                      <span className="text-cyan-300 font-bold text-sm">{apiResponse.latencyMs} ms</span>
+                      <span className="text-emerald-300 font-bold text-sm">{apiResponse.latencyMs} ms</span>
                     </div>
                   </div>
 
                   <div className="md:col-span-8 space-y-3">
                     <span className="text-[10px] text-slate-500 font-bold uppercase block">JSON PAYLOAD BODY</span>
-                    <pre className="p-3 bg-slate-900 rounded-lg text-cyan-300/90 text-[11px] overflow-x-auto border border-slate-800">
+                    <pre className="p-3 bg-slate-900 rounded-lg text-emerald-300/90 text-[11px] overflow-x-auto border border-slate-800">
                       <code>{JSON.stringify(apiResponse.body, null, 2)}</code>
                     </pre>
                   </div>
@@ -222,12 +222,12 @@ export default function EngineeringLab() {
               <div className="flex items-center justify-between border-b border-slate-800 pb-4">
                 <div>
                   <h3 className="font-sans text-xl font-bold text-slate-100">WEBSOCKET FRAME MONITOR</h3>
-                  <p className="text-xs text-slate-400">Bidirectional frame transmission and connection state monitor.</p>
+                  <p className="text-xs text-slate-400 font-sans">Bidirectional frame transmission and connection state monitor.</p>
                 </div>
                 <button
                   onClick={toggleWsConnection}
                   className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                    wsConnected ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-emerald-500 text-slate-950'
+                    wsConnected ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-emerald-400 text-slate-950'
                   }`}
                 >
                   {wsConnected ? 'DISCONNECT' : 'CONNECT WSS'}
@@ -259,14 +259,14 @@ export default function EngineeringLab() {
                   type="text"
                   value={wsMessage}
                   onChange={(e) => setWsMessage(e.target.value)}
-                  placeholder='{"action":"SUBSCRIBE_METRICS"}'
+                  placeholder='{"action":"SUBSCRIBE_RESQNET_NODES"}'
                   disabled={!wsConnected}
                   className="flex-1 bg-slate-900 text-xs text-slate-200 p-3 rounded-xl border border-slate-800 focus:outline-none disabled:opacity-50"
                 />
                 <button
                   onClick={sendWsFrame}
                   disabled={!wsConnected}
-                  className="px-6 py-3 bg-cyan-500 text-slate-950 font-bold text-xs rounded-xl flex items-center space-x-2 disabled:opacity-50 cursor-pointer"
+                  className="px-6 py-3 bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl flex items-center space-x-2 disabled:opacity-50 cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
                   <span>SEND FRAME</span>
@@ -281,7 +281,7 @@ export default function EngineeringLab() {
               <div className="flex items-center justify-between border-b border-slate-800 pb-4">
                 <div>
                   <h3 className="font-sans text-xl font-bold text-slate-100">SQL QUERY EXPLAIN ANALYZER</h3>
-                  <p className="text-xs text-slate-400">Simulate database execution query plans & index scans.</p>
+                  <p className="text-xs text-slate-400 font-sans">Simulate PostgreSQL / SQLite execution query plans & index scans.</p>
                 </div>
               </div>
 
@@ -290,11 +290,11 @@ export default function EngineeringLab() {
                 <textarea
                   value={selectedQuery}
                   onChange={(e) => setSelectedQuery(e.target.value)}
-                  className="w-full bg-slate-950 text-cyan-300 font-mono-tech text-xs p-3.5 rounded-xl border border-slate-800 h-24 focus:outline-none"
+                  className="w-full bg-slate-950 text-emerald-300 font-mono-tech text-xs p-3.5 rounded-xl border border-slate-800 h-24 focus:outline-none"
                 />
                 <button
                   onClick={runSqlExplain}
-                  className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs rounded-xl flex items-center space-x-2 cursor-pointer"
+                  className="px-6 py-3 bg-emerald-400 hover:bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl flex items-center space-x-2 cursor-pointer"
                 >
                   <Database className="w-4 h-4" />
                   <span>EXPLAIN ANALYZER</span>
@@ -323,7 +323,7 @@ export default function EngineeringLab() {
               <div className="flex items-center justify-between border-b border-slate-800 pb-4">
                 <div>
                   <h3 className="font-sans text-xl font-bold text-slate-100">JWT AUTHENTICATION INSPECTOR</h3>
-                  <p className="text-xs text-slate-400">Inspect cryptographic signature verification and base64 payload decoding.</p>
+                  <p className="text-xs text-slate-400 font-sans">Inspect cryptographic signature verification and base64 payload decoding.</p>
                 </div>
               </div>
 
@@ -336,13 +336,13 @@ export default function EngineeringLab() {
                 </div>
 
                 <div className="md:col-span-6 space-y-3">
-                  <span className="text-[10px] text-cyan-400 font-bold uppercase block">DECODED CLAIMS PAYLOAD</span>
-                  <div className="bg-slate-950 p-3.5 rounded-xl border border-cyan-500/30 text-[11px] font-mono-tech text-cyan-300 space-y-1">
+                  <span className="text-[10px] text-emerald-400 font-bold uppercase block">DECODED CLAIMS PAYLOAD</span>
+                  <div className="bg-slate-950 p-3.5 rounded-xl border border-emerald-500/30 text-[11px] font-mono-tech text-emerald-300 space-y-1">
                     <div>{'{'}</div>
-                    <div className="pl-4 text-emerald-400">"sub": "developer-01a",</div>
-                    <div className="pl-4 text-emerald-400">"role": "Full-Stack Engineer",</div>
-                    <div className="pl-4 text-emerald-400">"iat": 1741212000,</div>
-                    <div className="pl-4 text-emerald-400">"exp": 1772748000</div>
+                    <div className="pl-4 text-emerald-300">"sub": "shrivasanth-01a",</div>
+                    <div className="pl-4 text-emerald-300">"role": "CS Engineer & Full-Stack",</div>
+                    <div className="pl-4 text-emerald-300">"institution": "SRM IST Tiruchirapalli",</div>
+                    <div className="pl-4 text-emerald-300">"iat": 1741212000</div>
                     <div>{'}'}</div>
                   </div>
                 </div>
@@ -350,18 +350,18 @@ export default function EngineeringLab() {
             </div>
           )}
 
-          {/* LAB 5: AI Token Streamer */}
+          {/* LAB 5: AI Streamer */}
           {activeTab === 'ai-streamer' && (
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-slate-800 pb-4">
                 <div>
                   <h3 className="font-sans text-xl font-bold text-slate-100">LLM SSE TOKEN STREAM VISUALIZER</h3>
-                  <p className="text-xs text-slate-400">Demonstrate chunked Server-Sent Events (SSE) streaming token by token.</p>
+                  <p className="text-xs text-slate-400 font-sans">Demonstrate chunked Server-Sent Events (SSE) streaming token by token.</p>
                 </div>
                 <button
                   onClick={startAiStream}
                   disabled={aiStreaming}
-                  className="px-5 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs rounded-xl flex items-center space-x-2 disabled:opacity-50 cursor-pointer"
+                  className="px-5 py-2.5 bg-emerald-400 hover:bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl flex items-center space-x-2 disabled:opacity-50 cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4" />
                   <span>GENERATE STREAM</span>
@@ -369,13 +369,13 @@ export default function EngineeringLab() {
               </div>
 
               <div className="bg-slate-950 p-6 rounded-xl border border-slate-800 min-h-[160px] flex flex-col justify-between">
-                <p className="text-sm font-sans text-cyan-200 leading-relaxed">
+                <p className="text-sm font-sans text-emerald-200 leading-relaxed">
                   {aiStreamText || <span className="text-slate-600 font-mono-tech text-xs">Click GENERATE STREAM to test live SSE token streaming...</span>}
-                  {aiStreaming && <span className="inline-block w-2 h-4 bg-cyan-400 ml-1 animate-pulse" />}
+                  {aiStreaming && <span className="inline-block w-2 h-4 bg-emerald-400 ml-1 animate-pulse" />}
                 </p>
-                <div className="pt-4 border-t border-slate-900 text-[10px] text-slate-500 flex justify-between">
+                <div className="pt-4 border-t border-slate-900 text-[10px] text-slate-500 flex justify-between font-mono-tech">
                   <span>PROTOCOL: SERVER-SENT EVENTS (SSE)</span>
-                  <span className="text-emerald-400">TTFT: 24ms</span>
+                  <span className="text-emerald-400 font-bold">TTFT: 18ms</span>
                 </div>
               </div>
             </div>

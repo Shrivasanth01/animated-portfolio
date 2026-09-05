@@ -25,7 +25,7 @@ export default function OSMenuBar({ activeAppTitle, onOpenCommandPalette }) {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-8 bg-slate-950/80 backdrop-blur-xl border-b border-white/10 px-4 flex items-center justify-between font-mono-tech text-xs select-none">
+    <header className="fixed top-0 left-0 right-0 z-50 h-8 bg-[#040d0a]/90 backdrop-blur-xl border-b border-emerald-500/20 px-4 flex items-center justify-between font-mono-tech text-xs select-none">
       {/* Left Menu Items */}
       <div className="flex items-center space-x-4">
         <div className="flex items-center space-x-2 text-emerald-400 font-bold">
@@ -42,7 +42,7 @@ export default function OSMenuBar({ activeAppTitle, onOpenCommandPalette }) {
         {activeAppTitle && (
           <>
             <span className="text-slate-700 hidden sm:inline">|</span>
-            <span className="text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30 text-[10px] hidden md:inline">
+            <span className="text-emerald-300 font-bold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30 text-[10px] hidden md:inline">
               APP: {activeAppTitle}
             </span>
           </>

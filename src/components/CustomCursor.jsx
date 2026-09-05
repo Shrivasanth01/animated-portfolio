@@ -8,7 +8,6 @@ export default function CustomCursor() {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
-    // Disable custom cursor on touch devices or reduced motion
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
       setIsTouchDevice(true);
       return;
@@ -18,7 +17,6 @@ export default function CustomCursor() {
       setPosition({ x: e.clientX, y: e.clientY });
       if (!isVisible) setIsVisible(true);
 
-      // Check if hovering interactive element with custom cursor attribute
       const target = e.target.closest('[data-cursor]');
       if (target) {
         setIsHovered(true);
@@ -26,7 +24,7 @@ export default function CustomCursor() {
       } else {
         const isClickable = e.target.closest('button, a, input, select, [role="button"]');
         setIsHovered(!!isClickable);
-        setCursorLabel(isClickable ? '' : '');
+        setCursorLabel('');
       }
     };
 
@@ -48,23 +46,23 @@ export default function CustomCursor() {
       className="pointer-events-none fixed inset-0 z-50 overflow-hidden"
       aria-hidden="true"
     >
-      {/* Small Precision Dot */}
+      {/* Precision Dot */}
       <div
-        className="fixed top-0 left-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400 shadow-[0_0_8px_#00f0ff] transition-transform duration-75"
+        className="fixed top-0 left-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-400 shadow-[0_0_10px_#10b981] transition-transform duration-75"
         style={{ transform: `translate3d(${position.x}px, ${position.y}px, 0)` }}
       />
 
       {/* Dynamic Action Ring / Label */}
       <div
-        className={`fixed top-0 left-0 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-cyan-400/40 bg-cyan-950/20 backdrop-blur-[2px] transition-all duration-200 ease-out ${
+        className={`fixed top-0 left-0 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-emerald-400/40 bg-emerald-950/20 backdrop-blur-[2px] transition-all duration-200 ease-out ${
           isHovered
-            ? 'h-14 w-14 border-cyan-400 bg-cyan-500/10 shadow-[0_0_20px_rgba(0,240,255,0.25)] scale-110'
+            ? 'h-14 w-14 border-emerald-400 bg-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.3)] scale-110'
             : 'h-8 w-8 scale-100'
         }`}
         style={{ transform: `translate3d(${position.x}px, ${position.y}px, 0)` }}
       >
         {cursorLabel && (
-          <span className="font-mono-tech text-[9px] font-bold tracking-widest text-cyan-300 uppercase animate-pulse">
+          <span className="font-mono-tech text-[9px] font-bold tracking-widest text-emerald-300 uppercase animate-pulse">
             {cursorLabel}
           </span>
         )}

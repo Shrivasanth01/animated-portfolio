@@ -14,56 +14,56 @@ export default function ContactSection() {
     if (!formData.name || !formData.email || !formData.message) return;
 
     setTransmitting(true);
-    setTerminalLogs(['ENCRYPTING TRANSMISSION PAYLOAD...']);
+    setTerminalLogs(['ENCRYPTING TRANSMISSION PAYLOAD (AES-256-GCM)...']);
 
     setTimeout(() => {
       setTerminalLogs(prev => [...prev, 'CONNECTING TO DEVELOPER RELAY NODE...']);
     }, 400);
 
     setTimeout(() => {
-      setTerminalLogs(prev => [...prev, 'TRANSMISSION SENT SUCCESSFULLY.']);
+      setTerminalLogs(prev => [...prev, 'TRANSMISSION SENT SUCCESSFULLY TO SHRIVASANTH J.']);
       setTransmitting(false);
       setTransmitted(true);
     }, 1200);
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#090a0f] border-t border-slate-900 font-mono-tech relative">
+    <section id="contact" className="py-24 bg-[#040d0a] border-t border-slate-900 font-mono-tech relative select-text">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Column: Headline & Social Links */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center space-x-2 text-xs text-cyan-400 font-bold bg-cyan-950/80 px-3 py-1 rounded-full border border-cyan-500/30">
+            <div className="inline-flex items-center space-x-2 text-xs text-emerald-400 font-bold bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-500/30">
               <Radio className="w-3.5 h-3.5 animate-pulse" />
               <span>INITIATE CONNECTION</span>
             </div>
 
             <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight">
               LET'S BUILD SOMETHING <br />
-              <span className="text-cyan-400">WORTH SHIPPING.</span>
+              <span className="text-emerald-400">WORTH SHIPPING.</span>
             </h2>
 
             <p className="text-slate-300 text-sm font-sans leading-relaxed">
-              Have an engineering role, complex web application, or product vision? Send a transmission directly to my system console.
+              Have an engineering role, full-stack application, or system design challenge? Send a transmission directly to my system console.
             </p>
 
             {/* Direct Channels */}
             <div className="space-y-3 pt-2">
               <a
                 href={`mailto:${profileData.email}`}
-                className="p-4 glass-panel rounded-xl border border-slate-800 flex items-center justify-between hover:border-cyan-500/30 transition-all group cursor-pointer"
+                className="p-4 os-glass-panel rounded-xl border border-slate-800 flex items-center justify-between hover:border-emerald-500/30 transition-all group cursor-pointer"
                 data-cursor="EMAIL"
               >
                 <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-cyan-400" />
+                  <Mail className="w-5 h-5 text-emerald-400" />
                   <div>
                     <span className="text-[10px] text-slate-500 font-bold block uppercase">DIRECT EMAIL</span>
-                    <span className="text-xs font-bold text-slate-200 group-hover:text-cyan-300">{profileData.email}</span>
+                    <span className="text-xs font-bold text-slate-200 group-hover:text-emerald-300">{profileData.email}</span>
                   </div>
                 </div>
-                <span className="text-xs text-slate-500 group-hover:text-cyan-400">SEND ›</span>
+                <span className="text-xs text-slate-500 group-hover:text-emerald-400">SEND ›</span>
               </a>
 
               <div className="flex gap-3">
@@ -71,7 +71,7 @@ export default function ContactSection() {
                   href={profileData.githubUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 p-3.5 glass-panel rounded-xl border border-slate-800 flex items-center justify-center space-x-2 text-xs font-bold text-slate-200 hover:text-cyan-400 hover:border-cyan-500/30 transition-all cursor-pointer"
+                  className="flex-1 p-3.5 os-glass-panel rounded-xl border border-slate-800 flex items-center justify-center space-x-2 text-xs font-bold text-slate-200 hover:text-emerald-400 hover:border-emerald-500/30 transition-all cursor-pointer"
                   data-cursor="GITHUB"
                 >
                   <FiGithub className="w-4 h-4" />
@@ -82,7 +82,7 @@ export default function ContactSection() {
                   href={profileData.linkedinUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 p-3.5 glass-panel rounded-xl border border-slate-800 flex items-center justify-center space-x-2 text-xs font-bold text-slate-200 hover:text-cyan-400 hover:border-cyan-500/30 transition-all cursor-pointer"
+                  className="flex-1 p-3.5 os-glass-panel rounded-xl border border-slate-800 flex items-center justify-center space-x-2 text-xs font-bold text-slate-200 hover:text-emerald-400 hover:border-emerald-500/30 transition-all cursor-pointer"
                   data-cursor="LINKEDIN"
                 >
                   <FiLinkedin className="w-4 h-4" />
@@ -95,15 +95,15 @@ export default function ContactSection() {
 
           {/* Right Column: Terminal Transmission Form */}
           <div className="lg:col-span-7">
-            <div className="glass-panel rounded-2xl border border-cyan-500/30 p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+            <div className="os-glass-panel rounded-2xl border border-emerald-500/30 p-6 sm:p-8 shadow-2xl relative overflow-hidden">
               
               {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
                 <div className="flex items-center space-x-2">
-                  <Terminal className="w-5 h-5 text-cyan-400" />
-                  <span className="font-bold text-xs text-slate-200">TRANSMISSION_TERMINAL_v4.2</span>
+                  <Terminal className="w-5 h-5 text-emerald-400" />
+                  <span className="font-bold text-xs text-slate-200">TRANSMISSION_TERMINAL_v5.0</span>
                 </div>
-                <span className="text-[10px] text-emerald-400 bg-emerald-950/80 px-2.5 py-0.5 rounded border border-emerald-500/30">
+                <span className="text-[10px] text-emerald-400 bg-emerald-950/80 px-2.5 py-0.5 rounded border border-emerald-500/30 font-bold">
                   PORT 443 READY
                 </span>
               </div>
@@ -115,14 +115,14 @@ export default function ContactSection() {
                   </div>
                   <h3 className="font-sans text-2xl font-bold text-slate-100">TRANSMISSION RECEIVED.</h3>
                   <p className="text-xs text-slate-300 font-sans max-w-sm mx-auto">
-                    Thank you for reaching out. I'll review your payload and respond promptly.
+                    Thank you for reaching out, {formData.name}. I'll review your message payload and respond promptly.
                   </p>
                   <button
                     onClick={() => {
                       setTransmitted(false);
                       setFormData({ name: '', email: '', message: '' });
                     }}
-                    className="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-cyan-400 text-xs font-bold rounded-xl border border-slate-800 cursor-pointer"
+                    className="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-emerald-400 text-xs font-bold rounded-xl border border-slate-800 cursor-pointer"
                   >
                     SEND ANOTHER TRANSMISSION
                   </button>
@@ -137,7 +137,7 @@ export default function ContactSection() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Alex Mercer"
-                      className="w-full bg-slate-950 text-xs text-slate-100 p-3.5 rounded-xl border border-slate-800 focus:border-cyan-500/50 focus:outline-none"
+                      className="w-full bg-slate-950 text-xs text-slate-100 p-3.5 rounded-xl border border-slate-800 focus:border-emerald-500/50 focus:outline-none"
                     />
                   </div>
 
@@ -149,7 +149,7 @@ export default function ContactSection() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="e.g. alex@company.com"
-                      className="w-full bg-slate-950 text-xs text-slate-100 p-3.5 rounded-xl border border-slate-800 focus:border-cyan-500/50 focus:outline-none"
+                      className="w-full bg-slate-950 text-xs text-slate-100 p-3.5 rounded-xl border border-slate-800 focus:border-emerald-500/50 focus:outline-none"
                     />
                   </div>
 
@@ -160,14 +160,14 @@ export default function ContactSection() {
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Detail your project requirements or position details..."
-                      className="w-full bg-slate-950 text-xs text-slate-100 p-3.5 rounded-xl border border-slate-800 focus:border-cyan-500/50 focus:outline-none font-sans"
+                      placeholder="Detail your project requirements or engineering position..."
+                      className="w-full bg-slate-950 text-xs text-slate-100 p-3.5 rounded-xl border border-slate-800 focus:border-emerald-500/50 focus:outline-none font-sans"
                     />
                   </div>
 
                   {/* Terminal Diagnostic Log output */}
                   {terminalLogs.length > 0 && (
-                    <div className="bg-slate-950 p-3 rounded-xl border border-slate-900 space-y-1 text-[10px] text-cyan-400">
+                    <div className="bg-slate-950 p-3 rounded-xl border border-slate-900 space-y-1 text-[10px] text-emerald-400">
                       {terminalLogs.map((log, i) => (
                         <div key={i}>› {log}</div>
                       ))}
@@ -177,7 +177,7 @@ export default function ContactSection() {
                   <button
                     type="submit"
                     disabled={transmitting}
-                    className="w-full py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs rounded-xl flex items-center justify-center space-x-2 shadow-[0_0_25px_rgba(0,240,255,0.4)] transition-all cursor-pointer disabled:opacity-50"
+                    className="w-full py-4 bg-emerald-400 hover:bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl flex items-center justify-center space-x-2 shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all cursor-pointer disabled:opacity-50"
                     data-cursor="TRANSMIT"
                   >
                     <Send className="w-4 h-4" />

@@ -7,10 +7,10 @@ export default function ResumeSection() {
   const [showPreviewModal, setShowPreviewModal] = useState(false);
 
   return (
-    <section id="resume" className="py-24 bg-[#090a0f] border-t border-slate-900 font-mono-tech relative">
+    <section id="resume" className="py-24 bg-[#040d0a] border-t border-slate-900 font-mono-tech relative select-text">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="glass-panel rounded-2xl border border-emerald-500/30 p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+        <div className="os-glass-panel rounded-2xl border border-emerald-500/30 p-8 sm:p-12 shadow-2xl relative overflow-hidden">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
@@ -41,7 +41,7 @@ export default function ResumeSection() {
             <div className="lg:col-span-4 flex flex-col space-y-3 justify-center">
               <button
                 onClick={() => setShowPreviewModal(true)}
-                className="w-full py-4 glass-panel hover:bg-slate-800 text-slate-100 font-bold text-xs rounded-xl border border-slate-700 flex items-center justify-center space-x-2 transition-all cursor-pointer"
+                className="w-full py-4 os-glass-panel hover:bg-slate-800 text-slate-100 font-bold text-xs rounded-xl border border-slate-700 flex items-center justify-center space-x-2 transition-all cursor-pointer"
                 data-cursor="PREVIEW"
               >
                 <Eye className="w-4 h-4 text-emerald-400" />
@@ -51,7 +51,7 @@ export default function ResumeSection() {
               <a
                 href={resumeData.pdfUrl}
                 download="Shrivasanth_J_Resume.pdf"
-                className="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl flex items-center justify-center space-x-2 shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all cursor-pointer"
+                className="w-full py-4 bg-emerald-400 hover:bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl flex items-center justify-center space-x-2 shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all cursor-pointer"
                 data-cursor="DOWNLOAD"
               >
                 <Download className="w-4 h-4" />
@@ -71,8 +71,8 @@ export default function ResumeSection() {
 
       {/* Resume Preview Modal */}
       {showPreviewModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl">
-          <div className="relative w-full max-w-3xl glass-panel rounded-2xl border border-emerald-500/30 p-6 sm:p-8 shadow-2xl space-y-6 max-h-[85vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl">
+          <div className="relative w-full max-w-3xl os-glass-window rounded-2xl border border-emerald-500/30 p-6 sm:p-8 shadow-2xl space-y-6 max-h-[85vh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <div className="flex items-center space-x-2">
                 <FileText className="w-5 h-5 text-emerald-400" />
@@ -103,7 +103,7 @@ export default function ResumeSection() {
                 <div className="bg-slate-900/60 p-3 rounded-lg border border-slate-800 space-y-1">
                   <div className="font-bold text-slate-100">{profileData.education.degree}</div>
                   <div className="text-slate-400">{profileData.education.institution}</div>
-                  <div className="text-emerald-400 text-[11px] font-mono-tech">
+                  <div className="text-emerald-300 text-[11px] font-mono-tech">
                     CGPA: {profileData.education.cgpa} | Graduation: {profileData.education.graduation}
                   </div>
                 </div>

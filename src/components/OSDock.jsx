@@ -17,7 +17,7 @@ export default function OSDock({ openWindowIds, activeWindowId, onLaunchApp }) {
 
   return (
     <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 select-none">
-      <div className="glass-panel px-3 py-2 rounded-2xl border border-emerald-500/30 shadow-2xl flex items-center space-x-2 bg-slate-950/70 backdrop-blur-2xl">
+      <div className="glass-panel px-3 py-2 rounded-2xl border border-emerald-500/30 shadow-2xl flex items-center space-x-2 bg-[#040d0a]/90 backdrop-blur-2xl">
         {desktopApps.map((app) => {
           const IconComp = app.icon;
           const isOpen = openWindowIds.includes(app.id);
@@ -39,7 +39,7 @@ export default function OSDock({ openWindowIds, activeWindowId, onLaunchApp }) {
                 onMouseLeave={() => setHoveredApp(null)}
                 className={`w-11 h-11 rounded-xl flex flex-col items-center justify-center transition-all duration-200 cursor-pointer relative ${
                   isActive
-                    ? 'bg-emerald-500 text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.5)] scale-110'
+                    ? 'bg-emerald-400 text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.6)] scale-110'
                     : isOpen
                     ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-500/40'
                     : 'bg-slate-900/60 text-slate-400 hover:text-slate-100 hover:bg-slate-800'

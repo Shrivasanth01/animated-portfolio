@@ -33,7 +33,7 @@ export default function AnimatedCanvasBackground() {
       draw() {
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
-        ctx.fillStyle = "rgba(56, 189, 248, 0.6)"
+        ctx.fillStyle = "rgba(16, 185, 129, 0.6)"
         ctx.fill()
       }
     }
@@ -50,7 +50,7 @@ export default function AnimatedCanvasBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy)
 
           if (dist < 120) {
-            ctx.strokeStyle = `rgba(56, 189, 248, ${1 - dist / 120})`
+            ctx.strokeStyle = `rgba(16, 185, 129, ${(1 - dist / 120) * 0.25})`
             ctx.lineWidth = 0.4
             ctx.beginPath()
             ctx.moveTo(particles[a].x, particles[a].y)
@@ -82,7 +82,7 @@ export default function AnimatedCanvasBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 -z-10 bg-slate-950"
+      className="fixed inset-0 -z-10 bg-[#040d0a]"
     />
   )
 }

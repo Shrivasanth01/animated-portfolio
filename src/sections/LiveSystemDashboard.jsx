@@ -7,11 +7,11 @@ export default function LiveSystemDashboard() {
   const [githubData, setGithubData] = useState({
     reposCount: 18,
     starsCount: 42,
-    languages: ["TypeScript", "JavaScript", "React", "HTML/CSS", "Python"],
+    languages: ["TypeScript", "Python", "C/C++", "JavaScript", "HTML/CSS"],
     recentRepos: [
       { name: "animated-portfolio", stars: 12, forks: 3, lang: "JavaScript", url: "https://github.com/Shrivasanth01/animated-portfolio" },
-      { name: "telemetry-stream-engine", stars: 15, forks: 4, lang: "TypeScript", url: "https://github.com/Shrivasanth01" },
-      { name: "ai-workflow-orchestrator", stars: 8, forks: 1, lang: "Python", url: "https://github.com/Shrivasanth01" }
+      { name: "ResQNet-Disaster-Mesh", stars: 18, forks: 5, lang: "Python / Fast-API", url: "https://github.com/Shrivasanth01" },
+      { name: "AI-Behavioral-Biometrics", stars: 10, forks: 2, lang: "Python", url: "https://github.com/Shrivasanth01" }
     ]
   });
   const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ export default function LiveSystemDashboard() {
             setGithubData({
               reposCount: repos.length,
               starsCount: stars,
-              languages: ["TypeScript", "JavaScript", "React", "HTML/CSS", "Python"],
+              languages: ["TypeScript", "Python", "C/C++", "JavaScript", "HTML/CSS"],
               recentRepos: sorted.map(r => ({
                 name: r.name,
                 stars: r.stargazers_count,
@@ -51,73 +51,73 @@ export default function LiveSystemDashboard() {
   }, []);
 
   return (
-    <section className="py-24 bg-[#090a0f] border-t border-slate-900 font-mono-tech relative">
+    <section className="py-24 bg-[#040d0a] border-t border-slate-900 font-mono-tech relative select-text">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span className="text-xs font-bold text-cyan-400 bg-cyan-950/80 px-3 py-1 rounded-full border border-cyan-500/30">
+          <span className="text-xs font-bold text-emerald-400 bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-500/30">
             REAL-TIME TELEMETRY & GITHUB API
           </span>
           <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
             LIVE SYSTEM DASHBOARD
           </h2>
-          <p className="text-slate-400 text-xs sm:text-sm">
+          <p className="text-slate-400 text-xs sm:text-sm font-sans">
             Live metrics and active repository telemetry synchronized directly from GitHub.
           </p>
         </div>
 
         {/* System Metric Cards Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          <div className="glass-panel p-5 rounded-xl border border-slate-800">
+          <div className="os-glass-panel p-5 rounded-xl border border-slate-800">
             <div className="flex items-center justify-between text-slate-500 text-xs mb-2">
               <span>PUBLIC REPOS</span>
-              <FiGithub className="w-4 h-4 text-cyan-400" />
+              <FiGithub className="w-4 h-4 text-emerald-400" />
             </div>
             <div className="text-2xl sm:text-3xl font-bold text-slate-100">{loading ? '...' : githubData.reposCount}</div>
-            <span className="text-[10px] text-emerald-400 block mt-1">● SYNCED VIA API</span>
+            <span className="text-[10px] text-emerald-400 font-bold block mt-1">● SYNCED VIA API</span>
           </div>
 
-          <div className="glass-panel p-5 rounded-xl border border-slate-800">
+          <div className="os-glass-panel p-5 rounded-xl border border-slate-800">
             <div className="flex items-center justify-between text-slate-500 text-xs mb-2">
               <span>STARS EARNED</span>
               <Star className="w-4 h-4 text-amber-400" />
             </div>
             <div className="text-2xl sm:text-3xl font-bold text-slate-100">{loading ? '...' : githubData.starsCount}</div>
-            <span className="text-[10px] text-cyan-400 block mt-1">COMMUNITY STARS</span>
+            <span className="text-[10px] text-emerald-300 block mt-1">COMMUNITY STARS</span>
           </div>
 
-          <div className="glass-panel p-5 rounded-xl border border-slate-800">
+          <div className="os-glass-panel p-5 rounded-xl border border-slate-800">
             <div className="flex items-center justify-between text-slate-500 text-xs mb-2">
               <span>BUILD MODE</span>
               <Activity className="w-4 h-4 text-emerald-400" />
             </div>
             <div className="text-2xl sm:text-3xl font-bold text-emerald-400">ACTIVE</div>
-            <span className="text-[10px] text-slate-500 block mt-1">OPEN TO OPPORTUNITIES</span>
+            <span className="text-[10px] text-slate-500 block mt-1">OPEN TO ROLES</span>
           </div>
 
-          <div className="glass-panel p-5 rounded-xl border border-slate-800">
+          <div className="os-glass-panel p-5 rounded-xl border border-slate-800">
             <div className="flex items-center justify-between text-slate-500 text-xs mb-2">
               <span>UPTIME TARGET</span>
-              <Code2 className="w-4 h-4 text-purple-400" />
+              <Code2 className="w-4 h-4 text-cyan-400" />
             </div>
-            <div className="text-2xl sm:text-3xl font-bold text-slate-100">99.98%</div>
-            <span className="text-[10px] text-cyan-400 block mt-1">SUB-100MS LATENCY</span>
+            <div className="text-2xl sm:text-3xl font-bold text-slate-100">99.99%</div>
+            <span className="text-[10px] text-emerald-400 block mt-1">SUB-100MS LATENCY</span>
           </div>
         </div>
 
         {/* Featured Repositories Stream */}
-        <div className="glass-panel rounded-2xl border border-cyan-500/30 p-6 sm:p-8 shadow-2xl">
+        <div className="os-glass-panel rounded-2xl border border-emerald-500/30 p-6 sm:p-8 shadow-2xl">
           <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
             <div className="flex items-center space-x-3">
-              <FiGithub className="w-5 h-5 text-cyan-400" />
+              <FiGithub className="w-5 h-5 text-emerald-400" />
               <h3 className="font-sans text-xl font-bold text-slate-100">FEATURED REPOSITORIES</h3>
             </div>
             <a
               href={profileData.githubUrl}
               target="_blank"
               rel="noreferrer"
-              className="text-xs text-cyan-400 hover:underline flex items-center space-x-1"
+              className="text-xs text-emerald-400 hover:underline flex items-center space-x-1"
               data-cursor="EXPLORE"
             >
               <span>EXPLORE GITHUB</span>
@@ -132,15 +132,15 @@ export default function LiveSystemDashboard() {
                 href={repo.url}
                 target="_blank"
                 rel="noreferrer"
-                className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/30 transition-all flex flex-col justify-between group cursor-pointer"
+                className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/30 transition-all flex flex-col justify-between group cursor-pointer"
                 data-cursor="REPO"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold text-sm text-slate-100 group-hover:text-cyan-300 transition-colors">
+                    <span className="font-bold text-sm text-slate-100 group-hover:text-emerald-300 transition-colors">
                       {repo.name}
                     </span>
-                    <span className="text-[10px] bg-cyan-950 text-cyan-400 px-2 py-0.5 rounded border border-cyan-500/30">
+                    <span className="text-[10px] bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30">
                       {repo.lang}
                     </span>
                   </div>
@@ -157,7 +157,7 @@ export default function LiveSystemDashboard() {
                       <span>{repo.forks}</span>
                     </span>
                   </div>
-                  <span className="text-[10px] text-cyan-400 group-hover:translate-x-1 transition-transform">VIEW ›</span>
+                  <span className="text-[10px] text-emerald-400 group-hover:translate-x-1 transition-transform">VIEW ›</span>
                 </div>
               </a>
             ))}

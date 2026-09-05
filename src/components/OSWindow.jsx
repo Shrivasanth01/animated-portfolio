@@ -28,7 +28,7 @@ export default function OSWindow({
       } os-glass-window shadow-2xl flex flex-col overflow-hidden font-mono-tech`}
     >
       {/* Title Bar Header */}
-      <div className="h-10 bg-slate-950/90 border-b border-slate-800 px-4 flex items-center justify-between select-none cursor-pointer">
+      <div className="h-10 bg-[#040d0a]/95 border-b border-slate-800 px-4 flex items-center justify-between select-none cursor-pointer">
         {/* Left: Window Traffic Light Controls */}
         <div className="flex items-center space-x-2">
           <button
@@ -36,7 +36,7 @@ export default function OSWindow({
               e.stopPropagation();
               onClose();
             }}
-            className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center text-slate-950 text-[8px] font-bold group"
+            className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center text-slate-950 text-[8px] font-bold group cursor-pointer"
             title="Close Window"
             data-cursor="CLOSE"
           >
@@ -48,7 +48,7 @@ export default function OSWindow({
               e.stopPropagation();
               onMinimize();
             }}
-            className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 flex items-center justify-center text-slate-950 text-[8px] font-bold group"
+            className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 flex items-center justify-center text-slate-950 text-[8px] font-bold group cursor-pointer"
             title="Minimize Window"
             data-cursor="MINIMIZE"
           >
@@ -60,7 +60,7 @@ export default function OSWindow({
               e.stopPropagation();
               onMaximize();
             }}
-            className="w-3 h-3 rounded-full bg-emerald-500 hover:bg-emerald-600 flex items-center justify-center text-slate-950 text-[8px] font-bold group"
+            className="w-3 h-3 rounded-full bg-emerald-400 hover:bg-emerald-500 flex items-center justify-center text-slate-950 text-[8px] font-bold group cursor-pointer"
             title="Maximize Window"
             data-cursor="MAXIMIZE"
           >
@@ -81,7 +81,7 @@ export default function OSWindow({
       </div>
 
       {/* Window Body Content */}
-      <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-[#060a08]/80 text-slate-200">
+      <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-[#040d0a]/90 text-slate-200">
         {children}
       </div>
     </div>
