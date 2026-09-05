@@ -42,8 +42,8 @@ export const projectsData = [
     ],
 
     result: "Guaranteed tamper-proof, zero-internet emergency SOS packet propagation across multi-hop BLE peer devices.",
-    liveDemo: "https://github.com/shrivasanth01",
-    githubUrl: "https://github.com/shrivasanth01/animated-portfolio",
+    liveDemo: "https://github.com/Shrivasanth01",
+    githubUrl: "https://github.com/Shrivasanth01/animated-portfolio",
     caseStudyUrl: "#"
   },
   {
@@ -81,8 +81,8 @@ export const projectsData = [
     ],
 
     result: "Achieved continuous post-login threat evaluation with instantaneous risk score recalculation.",
-    liveDemo: "https://github.com/shrivasanth01",
-    githubUrl: "https://github.com/shrivasanth01/animated-portfolio",
+    liveDemo: "https://github.com/Shrivasanth01",
+    githubUrl: "https://github.com/Shrivasanth01/animated-portfolio",
     caseStudyUrl: "#"
   },
   {
@@ -118,8 +118,8 @@ export const projectsData = [
     ],
 
     result: "Optimized lighting power consumption while delivering smooth, flicker-free illumination adjustments.",
-    liveDemo: "https://github.com/shrivasanth01",
-    githubUrl: "https://github.com/shrivasanth01/animated-portfolio",
+    liveDemo: "https://github.com/Shrivasanth01",
+    githubUrl: "https://github.com/Shrivasanth01/animated-portfolio",
     caseStudyUrl: "#"
   },
   {
@@ -155,8 +155,8 @@ export const projectsData = [
     ],
 
     result: "Delivered intuitive weather visualizations and location analytics for NASA POWER API datasets.",
-    liveDemo: "https://github.com/shrivasanth01",
-    githubUrl: "https://github.com/shrivasanth01/animated-portfolio",
+    liveDemo: "https://github.com/Shrivasanth01",
+    githubUrl: "https://github.com/Shrivasanth01/animated-portfolio",
     caseStudyUrl: "#"
   }
 ];

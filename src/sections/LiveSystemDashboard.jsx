@@ -9,9 +9,9 @@ export default function LiveSystemDashboard() {
     starsCount: 42,
     languages: ["TypeScript", "JavaScript", "React", "HTML/CSS", "Python"],
     recentRepos: [
-      { name: "animated-portfolio", stars: 12, forks: 3, lang: "JavaScript", url: "https://github.com/shrivasanth01/animated-portfolio" },
-      { name: "telemetry-stream-engine", stars: 15, forks: 4, lang: "TypeScript", url: "https://github.com/shrivasanth01" },
-      { name: "ai-workflow-orchestrator", stars: 8, forks: 1, lang: "Python", url: "https://github.com/shrivasanth01" }
+      { name: "animated-portfolio", stars: 12, forks: 3, lang: "JavaScript", url: "https://github.com/Shrivasanth01/animated-portfolio" },
+      { name: "telemetry-stream-engine", stars: 15, forks: 4, lang: "TypeScript", url: "https://github.com/Shrivasanth01" },
+      { name: "ai-workflow-orchestrator", stars: 8, forks: 1, lang: "Python", url: "https://github.com/Shrivasanth01" }
     ]
   });
   const [loading, setLoading] = useState(true);
@@ -19,7 +19,7 @@ export default function LiveSystemDashboard() {
   useEffect(() => {
     async function fetchGithubStats() {
       try {
-        const response = await fetch('https://api.github.com/users/shrivasanth01/repos?per_page=100');
+        const response = await fetch('https://api.github.com/users/Shrivasanth01/repos?per_page=100');
         if (response.ok) {
           const repos = await response.json();
           if (Array.isArray(repos)) {

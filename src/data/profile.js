@@ -6,8 +6,8 @@ export const profileData = {
   location: "Tamil Nadu, India",
   email: "shrivasanth01@gmail.com",
   phone: "+91 93636 64299",
-  githubUrl: "https://github.com/shrivasanth01",
-  linkedinUrl: "https://linkedin.com/in/shrivasanth-j",
+  githubUrl: "https://github.com/Shrivasanth01",
+  linkedinUrl: "https://www.linkedin.com/in/shrivasanth-j-b080a2364/",
   status: "AVAILABLE FOR OPPORTUNITIES",
   currentMode: "BUILDING & ENGINEERING",
 

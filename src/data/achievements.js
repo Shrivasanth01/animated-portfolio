@@ -7,7 +7,7 @@ export const achievementsData = [
     year: "2026",
     description: "Architected an offline-first emergency communication platform utilizing BLE P2P mesh relays, AES-256-GCM encryption, Ed25519 signatures, and FastAPI dashboards.",
     badge: "Flagship Engineering Project",
-    link: "https://github.com/shrivasanth01"
+    link: "https://github.com/Shrivasanth01"
   },
   {
     id: "ach-2",
@@ -27,7 +27,7 @@ export const achievementsData = [
     year: "Oct 2025",
     description: "Built a full-stack weather data visualization dashboard leveraging Next.js, Express.js, PostgreSQL, and NASA POWER API datasets.",
     badge: "Full-Stack Project",
-    link: "https://github.com/shrivasanth01"
+    link: "https://github.com/Shrivasanth01"
   },
   {
     id: "ach-4",
