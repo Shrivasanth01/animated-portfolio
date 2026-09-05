@@ -2,8 +2,9 @@ import { Terminal, Mail, ArrowUp } from 'lucide-react';
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import { profileData } from '../data/profile';
 
-export default function Footer() {
+export default function Footer({ onLaunchApp }) {
   const scrollToTop = () => {
+    if (onLaunchApp) onLaunchApp('hero');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Search, Command, Terminal, FileText, Send, Sparkles, Layers, X, Code2 } from 'lucide-react';
+import { Search, Command, Terminal, FileText, Send, Sparkles, Layers, X, Code2, Folder, Cpu } from 'lucide-react';
 import { profileData } from '../data/profile';
 
-export default function CommandPalette({ isOpen, onClose }) {
+export default function CommandPalette({ isOpen, onClose, onLaunchApp }) {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -21,39 +21,40 @@ export default function CommandPalette({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   const actions = [
-    { id: 'hero', label: 'Jump to Hero / Command Center', icon: Terminal, section: '#hero' },
-    { id: 'about', label: 'Explore Developer Bio & Profile', icon: Sparkles, section: '#about' },
-    { id: 'stack', label: 'View Technology Universe', icon: Code2, section: '#stack' },
-    { id: 'work', label: 'Inspect Featured Case Studies', icon: Layers, section: '#work' },
-    { id: 'lab', label: 'Launch Engineering Lab Experiments', icon: Terminal, section: '#lab' },
-    { id: 'journey', label: 'View Career & Engineering Timeline', icon: Sparkles, section: '#journey' },
-    { id: 'resume', label: 'View & Download One-Page Resume', icon: FileText, section: '#resume' },
-    { id: 'contact', label: 'Send Transmission / Get In Touch', icon: Send, section: '#contact' }
+    { id: 'hero', label: 'Launch Command Center (Hero)', icon: Terminal },
+    { id: 'architecture', label: 'Launch System Architecture Pipeline', icon: Cpu },
+    { id: 'work', label: 'Inspect Featured Case Studies', icon: Folder },
+    { id: 'lab', label: 'Launch Engineering Lab Experiments', icon: Layers },
+    { id: 'stack', label: 'View Technology Universe & Skills', icon: Code2 },
+    { id: 'journey', label: 'View Career & Engineering Timeline', icon: Sparkles },
+    { id: 'resume', label: 'View & Download One-Page Resume', icon: FileText },
+    { id: 'contact', label: 'Send Transmission / Get In Touch', icon: Send }
   ];
 
   const filtered = actions.filter(a => a.label.toLowerCase().includes(query.toLowerCase()));
 
-  const handleSelect = (section) => {
+  const handleSelect = (appId) => {
     onClose();
-    const elem = document.querySelector(section);
-    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+    if (onLaunchApp) {
+      onLaunchApp(appId);
+    }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 bg-black/70 backdrop-blur-md p-4 animate-in fade-in duration-200">
-      <div className="w-full max-w-xl glass-panel rounded-xl border border-cyan-500/30 shadow-2xl overflow-hidden font-mono-tech">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 bg-black/80 backdrop-blur-md p-4 animate-in fade-in duration-200">
+      <div className="w-full max-w-xl os-glass-window rounded-xl border border-emerald-500/30 shadow-2xl overflow-hidden font-mono-tech">
         {/* Search Input Bar */}
-        <div className="flex items-center border-b border-slate-800 px-4 py-3 bg-slate-900/60">
-          <Search className="w-5 h-5 text-cyan-400 mr-3" />
+        <div className="flex items-center border-b border-slate-800 px-4 py-3 bg-slate-900/80">
+          <Search className="w-5 h-5 text-emerald-400 mr-3" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Type command or section name..."
+            placeholder="Type command or application name..."
             className="w-full bg-transparent text-sm text-slate-100 placeholder-slate-500 focus:outline-none"
             autoFocus
           />
-          <button onClick={onClose} className="p-1 text-slate-400 hover:text-slate-200">
+          <button onClick={onClose} className="p-1 text-slate-400 hover:text-slate-200 cursor-pointer">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -66,15 +67,16 @@ export default function CommandPalette({ isOpen, onClose }) {
               return (
                 <button
                   key={item.id}
-                  onClick={() => handleSelect(item.section)}
-                  className="w-full flex items-center justify-between p-3 rounded-lg text-xs text-left text-slate-300 hover:bg-cyan-500/10 hover:text-cyan-300 border border-transparent hover:border-cyan-500/20 transition-all cursor-pointer"
+                  onClick={() => handleSelect(item.id)}
+                  className="w-full flex items-center justify-between p-3 rounded-lg text-xs text-left text-slate-300 hover:bg-emerald-500/10 hover:text-emerald-300 border border-transparent hover:border-emerald-500/30 transition-all cursor-pointer"
+                  data-cursor="LAUNCH"
                 >
                   <div className="flex items-center space-x-3">
-                    <Icon className="w-4 h-4 text-cyan-400" />
+                    <Icon className="w-4 h-4 text-emerald-400" />
                     <span>{item.label}</span>
                   </div>
-                  <span className="text-[10px] text-slate-500 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
-                    JUMP
+                  <span className="text-[10px] text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30">
+                    LAUNCH
                   </span>
                 </button>
               );
@@ -89,7 +91,7 @@ export default function CommandPalette({ isOpen, onClose }) {
         {/* Footer info */}
         <div className="border-t border-slate-800 px-4 py-2 bg-slate-950 flex items-center justify-between text-[10px] text-slate-500">
           <div className="flex items-center space-x-2">
-            <Command className="w-3 h-3 text-cyan-400" />
+            <Command className="w-3 h-3 text-emerald-400" />
             <span>DEVELOPER COMMAND PALETTE</span>
           </div>
           <span>[ESC] TO CLOSE</span>

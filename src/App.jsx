@@ -102,6 +102,7 @@ export default function App() {
       <CommandPalette
         isOpen={isCommandPaletteOpen}
         onClose={() => setIsCommandPaletteOpen(false)}
+        onLaunchApp={focusWindow}
       />
 
       {/* Desktop Spatial Canvas with Desktop Shortcuts */}
@@ -179,7 +180,7 @@ export default function App() {
         onMinimize={() => toggleMinimize('hero')}
         onMaximize={() => toggleMaximize('hero')}
       >
-        <Hero />
+        <Hero onLaunchApp={focusWindow} />
       </OSWindow>
 
       {/* 2. Architecture Pipeline Window */}
@@ -305,7 +306,7 @@ export default function App() {
       </OSWindow>
 
       {/* Footer */}
-      <Footer />
+      <Footer onLaunchApp={focusWindow} />
     </div>
   );
 }
